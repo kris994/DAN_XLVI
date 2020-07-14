@@ -305,8 +305,14 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
                 ModifyVisibility = Visibility.Visible;
                 WorkerVisibility = Visibility.Visible;
             }
-            else
+            else if (LoggedUser.CurrentUser.Access.Contains("Read-Only") && WorkerList.Count == 0)
             {
+                ModifyVisibility = Visibility.Collapsed;
+                WorkerVisibility = Visibility.Collapsed;
+            }
+            else if (LoggedUser.CurrentUser.Access.Contains("Modify") && WorkerList.Count == 0)
+            {
+                ModifyVisibility = Visibility.Visible;
                 WorkerVisibility = Visibility.Collapsed;
             }
         }
@@ -607,6 +613,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
                         WorkerReportList = service.GetAllWorkerReports(LoggedUser.CurrentUser.UserID).ToList();
                     }
                     AccessModifier();
+                    SectorModifier();
                 }
                 catch (Exception ex)
                 {
