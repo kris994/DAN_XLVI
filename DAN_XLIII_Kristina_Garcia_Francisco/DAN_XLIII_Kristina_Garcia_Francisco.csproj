@@ -73,6 +73,7 @@
     <Compile Include="Helper\InputCalculator.cs" />
     <Compile Include="Helper\LogMessage.cs" />
     <Compile Include="Helper\Validation.cs" />
+    <Compile Include="Model\LoggedUser.cs" />
     <Compile Include="Model\Manager.cs" />
     <Compile Include="Model\Report.cs" />
     <Compile Include="Model\ReportDB.Context.cs">

@@ -100,7 +100,23 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
                 {
                     if (User.Username == UserList[i].Username && password == UserList[i].UserPassword)
                     {
-                        Service.LoggedInUser.Add(UserList[i]);
+                        LoggedUser.CurrentUser = new tblUser
+                        {
+                            UserID = UserList[i].UserID,
+                            FirstName = UserList[i].FirstName,
+                            LastName = UserList[i].LastName,
+                            JMBG = UserList[i].JMBG,
+                            DateOfBirth = UserList[i].DateOfBirth,
+                            BankAccount = UserList[i].BankAccount,
+                            Email = UserList[i].Email,
+                            Position = UserList[i].Position,
+                            Salary = UserList[i].Salary,
+                            Username = UserList[i].Username,
+                            UserPassword = UserList[i].UserPassword,
+                            Sector = UserList[i].Sector,
+                            Access = UserList[i].Access
+                        };
+
                         MainWindow mw = new MainWindow();
                         InfoLabel = "Loggedin";
                         found = true;                        

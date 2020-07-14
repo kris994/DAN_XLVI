@@ -14,11 +14,6 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco
     class Service
     {
         /// <summary>
-        /// Saves the loggdin user
-        /// </summary>
-        public static List<tblUser> LoggedInUser = new List<tblUser>();
-
-        /// <summary>
         /// Gets all information about users
         /// </summary>
         /// <returns>a list of found users</returns>
@@ -238,7 +233,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco
                             Project = report.Project,
                             ReportDate = report.ReportDate,
                             ReportHours = report.ReportHours,
-                            UserID = Service.LoggedInUser[0].UserID
+                            UserID = LoggedUser.CurrentUser.UserID
                         };
 
                         context.tblReports.Add(newReport);

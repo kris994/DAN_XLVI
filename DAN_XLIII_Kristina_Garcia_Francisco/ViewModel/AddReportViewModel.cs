@@ -27,7 +27,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
             report = new vwUserReport();
             addReport = addReportOpen;
             ReportList = service.GetAllReports().ToList();
-            WorkerReportList = service.GetAllWorkerReports(Service.LoggedInUser[0].UserID).ToList();
+            WorkerReportList = service.GetAllWorkerReports(LoggedUser.CurrentUser.UserID).ToList();
         }
 
 
@@ -41,7 +41,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
             report = reportEdit;
             addReport = addReportOpen;
             ReportList = service.GetAllReports().ToList();
-            WorkerReportList = service.GetAllWorkerReports(Service.LoggedInUser[0].UserID).ToList();
+            WorkerReportList = service.GetAllWorkerReports(LoggedUser.CurrentUser.UserID).ToList();
         }
         #endregion
 

@@ -1,6 +1,4 @@
-﻿
-
-using DAN_XLIII_Kristina_Garcia_Francisco.Command;
+﻿using DAN_XLIII_Kristina_Garcia_Francisco.Command;
 using DAN_XLIII_Kristina_Garcia_Francisco.Model;
 using DAN_XLIII_Kristina_Garcia_Francisco.View;
 using System;
@@ -29,7 +27,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
             main = mainOpen;
             WorkerList = service.GetAllWorkers().ToList();
             ReportList = service.GetAllReports().ToList();
-            WorkerReportList = service.GetAllWorkerReports(Service.LoggedInUser[0].UserID).ToList();
+            WorkerReportList = service.GetAllWorkerReports(LoggedUser.CurrentUser.UserID).ToList();
             AccessModifier();
             SectorModifier();
             ReportVisibilityModifier();            
@@ -292,17 +290,17 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
         /// </summary>
         public void AccessModifier()
         {
-            if (Service.LoggedInUser[0].Access == null)
+            if (LoggedUser.CurrentUser.Access == null)
             {
                 ModifyVisibility = Visibility.Collapsed;
                 WorkerVisibility = Visibility.Collapsed;
             }
-            else if (Service.LoggedInUser[0].Access.Contains("Read-Only") && WorkerList.Count != 0)
+            else if (LoggedUser.CurrentUser.Access.Contains("Read-Only") && WorkerList.Count != 0)
             {
                 ModifyVisibility = Visibility.Collapsed;
                 WorkerVisibility = Visibility.Visible;
             }
-            else if (Service.LoggedInUser[0].Access.Contains("Modify") && WorkerList.Count != 0)
+            else if (LoggedUser.CurrentUser.Access.Contains("Modify") && WorkerList.Count != 0)
             {
                 ModifyVisibility = Visibility.Visible;
                 WorkerVisibility = Visibility.Visible;
@@ -318,21 +316,21 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
         /// </summary>
         public void SectorModifier()
         {
-            if (Service.LoggedInUser[0].Sector == null)
+            if (LoggedUser.CurrentUser.Sector == null)
             {
                 AllReportsVisibility = Visibility.Collapsed;
             }
-            else if (Service.LoggedInUser[0].Sector.Contains("Financial") && ReportList.Count != 0)
+            else if (LoggedUser.CurrentUser.Sector.Contains("Financial") && ReportList.Count != 0)
             {
                 AllReportsVisibility = Visibility.Visible;
                 SectorVisibility = Visibility.Collapsed;
             }
-            else if (Service.LoggedInUser[0].Sector.Contains("HR") && ReportList.Count != 0)
+            else if (LoggedUser.CurrentUser.Sector.Contains("HR") && ReportList.Count != 0)
             {
                 AllReportsVisibility = Visibility.Visible;
                 SectorVisibility = Visibility.Visible;
             }
-            else if (Service.LoggedInUser[0].Sector.Contains("RD"))
+            else if (LoggedUser.CurrentUser.Sector.Contains("RD"))
             {
                 AllReportsVisibility = Visibility.Collapsed;
                 sectorVisibility = Visibility.Collapsed;
@@ -348,7 +346,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
         /// </summary>
         public void ReportVisibilityModifier()
         {
-            if (Service.LoggedInUser[0].Sector == null)
+            if (LoggedUser.CurrentUser.Sector == null)
             {
                 reportVisibility = Visibility.Visible;
             }
@@ -393,7 +391,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
                         int reportID = UserReport().ReportID;
                         service.DeleteReport(reportID);
                         ReportList = service.GetAllReports().ToList();
-                        WorkerReportList = service.GetAllWorkerReports(Service.LoggedInUser[0].UserID).ToList();
+                        WorkerReportList = service.GetAllWorkerReports(LoggedUser.CurrentUser.UserID).ToList();
                         SectorModifier();
                     }
                 }
@@ -455,7 +453,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
                     if ((addReport.DataContext as AddReportViewModel).IsUpdateReport == true)
                     {
                         ReportList = service.GetAllReports().ToList();
-                        WorkerReportList = service.GetAllWorkerReports(Service.LoggedInUser[0].UserID).ToList();
+                        WorkerReportList = service.GetAllWorkerReports(LoggedUser.CurrentUser.UserID).ToList();
                     }
                     SectorModifier();
                 }
@@ -510,7 +508,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
                 if ((addReport.DataContext as AddReportViewModel).IsUpdateReport == true)
                 {
                     ReportList = service.GetAllReports().ToList();
-                    WorkerReportList = service.GetAllWorkerReports(Service.LoggedInUser[0].UserID).ToList();
+                    WorkerReportList = service.GetAllWorkerReports(LoggedUser.CurrentUser.UserID).ToList();
                 }
                 SectorModifier();
             }
@@ -553,7 +551,6 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
             try
             {
                 Login login = new Login();
-                Service.LoggedInUser.RemoveAt(0);
                 main.Close();
                 login.Show();
             }
@@ -607,7 +604,7 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.ViewModel
                         WorkerList = service.GetAllWorkers().ToList();
                         UserList = service.GetAllUsers().ToList();
                         ReportList = service.GetAllReports().ToList();
-                        WorkerReportList = service.GetAllWorkerReports(Service.LoggedInUser[0].UserID).ToList();
+                        WorkerReportList = service.GetAllWorkerReports(LoggedUser.CurrentUser.UserID).ToList();
                     }
                     AccessModifier();
                 }

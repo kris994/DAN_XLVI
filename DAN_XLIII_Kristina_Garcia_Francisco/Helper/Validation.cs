@@ -219,9 +219,9 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.Helper
             // Find the user that wrote the report and the current time of the report
             if (reportID == 0)
             {
-                if (Service.LoggedInUser.Count > 0)
+                if (LoggedUser.CurrentUser.UserID != 0)
                 {
-                    userId = Service.LoggedInUser[0].UserID;
+                    userId = LoggedUser.CurrentUser.UserID;
                 }
             }
             else
