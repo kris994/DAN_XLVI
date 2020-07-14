@@ -6,15 +6,12 @@
         xmlns:local="clr-namespace:DAN_XLIII_Kristina_Garcia_Francisco"
         xmlns:c="clr-namespace:DAN_XLIII_Kristina_Garcia_Francisco.Converter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="auto" MaxHeight="450" Width="auto" MaxWidth="800" Background="#5BCED0">
+        Title="MainWindow" Height="auto" MaxHeight="450" Width="auto" MaxWidth="900">
     <Window.Resources>
         <c:ReportPositionConverter x:Key="ReportPositionConverter" />
         <c:ReportNameConverter x:Key="ReportNameConverter" />
     </Window.Resources>
     <Grid Margin="0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
@@ -37,14 +34,14 @@
                       HorizontalGridLinesBrush="Black" BorderBrush="Black" Foreground="Black"
                       FontWeight="Bold" Margin="20">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
-                    <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
-                    <DataGridTextColumn Header="JMBG" Binding="{Binding JMBG}"/>
-                    <DataGridTextColumn Header="Date of Birth" Binding="{Binding DateOfBirth, StringFormat=\{0:dd.MM.yyyy\}}"/>
-                    <DataGridTextColumn Header="Bank Account" Binding="{Binding BankAccount}"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
-                    <DataGridTextColumn Header="Salary" Binding="{Binding Salary}"/>
-                    <DataGridTextColumn Header="Position" Binding="{Binding Position}"/>
+                    <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="0.1*"/>
+                    <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="0.1*"/>
+                    <DataGridTextColumn Header="JMBG" Binding="{Binding JMBG}" Width="0.125*"/>
+                    <DataGridTextColumn Header="Date of Birth" Binding="{Binding DateOfBirth, StringFormat=\{0:dd.MM.yyyy\}}" Width="0.11*"/>
+                    <DataGridTextColumn Header="Bank Account" Binding="{Binding BankAccount}" Width="0.125*"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="0.125*"/>
+                    <DataGridTextColumn Header="Salary" Binding="{Binding Salary}" Width="0.1*"/>
+                    <DataGridTextColumn Header="Position" Binding="{Binding Position}" Width="0.1*"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -86,19 +83,19 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        
-        <Grid Grid.Column="1" Grid.Row="3" Height="auto" Width="auto" Visibility="{Binding AllReportsVisibility}">
+
+        <Grid Grid.Column="1" Grid.Row="3" Height="auto" Width="500" Visibility="{Binding AllReportsVisibility}" HorizontalAlignment="Left">
             <DataGrid Name="DataGridReports" ItemsSource="{Binding ReportList, UpdateSourceTrigger=PropertyChanged}"
                       SelectedItem="{Binding Report, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" HeadersVisibility="Column"
                       AutoGenerateColumns="False"
                       HorizontalGridLinesBrush="Black" BorderBrush="Black" Foreground="Black"
                       FontWeight="Bold" Margin="20">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding UserID, Converter={StaticResource ResourceKey=ReportNameConverter}}"/>
-                    <DataGridTextColumn Header="Date" Binding="{Binding ReportDate, StringFormat=\{0:dd.MM.yyyy\}}"/>
-                    <DataGridTextColumn Header="Project" Binding="{Binding Project}"/>
-                    <DataGridTextColumn Header="Position" Binding="{Binding UserID, Converter={StaticResource ResourceKey=ReportPositionConverter}}"/>
-                    <DataGridTextColumn Header="Hours" Binding="{Binding ReportHours}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding UserID, Converter={StaticResource ResourceKey=ReportNameConverter}}" Width="0.3*"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding ReportDate, StringFormat=\{0:dd.MM.yyyy\}}" Width="0.2*"/>
+                    <DataGridTextColumn Header="Project" Binding="{Binding Project}" Width="0.2*"/>
+                    <DataGridTextColumn Header="Position" Binding="{Binding UserID, Converter={StaticResource ResourceKey=ReportPositionConverter}}" Width="0.2*"/>
+                    <DataGridTextColumn Header="Hours" Binding="{Binding ReportHours}" Width="0.15*"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -141,18 +138,18 @@
             </DataGrid>
         </Grid>
 
-        <Grid Grid.Column="1" Grid.Row="3" Height="auto" Width="auto" Visibility="{Binding ReportVisibility}">
+        <Grid Grid.Column="1" Grid.Row="3" Height="auto" Width="500" Visibility="{Binding ReportVisibility}" HorizontalAlignment="Left">
             <DataGrid Name="DataGridWorkerReports" ItemsSource="{Binding WorkerReportList, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding Report, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" HeadersVisibility="Column"
+                      SelectedItem="{Binding Report, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
                       AutoGenerateColumns="False"
                       HorizontalGridLinesBrush="Black" BorderBrush="Black" Foreground="Black"
                       FontWeight="Bold" Margin="20">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding UserID, Converter={StaticResource ResourceKey=ReportNameConverter}}"/>
-                    <DataGridTextColumn Header="Date" Binding="{Binding ReportDate, StringFormat=\{0:dd.MM.yyyy\}}"/>
-                    <DataGridTextColumn Header="Project" Binding="{Binding Project}"/>
-                    <DataGridTextColumn Header="Position" Binding="{Binding UserID, Converter={StaticResource ResourceKey=ReportPositionConverter}}"/>
-                    <DataGridTextColumn Header="Hours" Binding="{Binding ReportHours}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding UserID, Converter={StaticResource ResourceKey=ReportNameConverter}}" Width="0.3*"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding ReportDate, StringFormat=\{0:dd.MM.yyyy\}}" Width="0.2*"/>
+                    <DataGridTextColumn Header="Project" Binding="{Binding Project}" Width="0.2*"/>
+                    <DataGridTextColumn Header="Position" Binding="{Binding UserID, Converter={StaticResource ResourceKey=ReportPositionConverter}}" Width="0.2*"/>
+                    <DataGridTextColumn Header="Hours" Binding="{Binding ReportHours}" Width="0.15*"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

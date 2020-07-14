@@ -34,6 +34,8 @@ namespace DAN_XLIII_Kristina_Garcia_Francisco.Model
             }
         }
 
+        
+
         /// <summary>
         /// Checks if the inputs are incorrect
         /// </summary>
